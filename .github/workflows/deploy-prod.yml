@@ -1,0 +1,31 @@
+# ── LaneSync-managed workflow ─────────────────────────────────────────────
+# This file is owned by LaneSync. Future "Update workflows" PRs may replace
+# custom edits you make here. Review the PR diff before merging.
+name: Deploy to Production
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag_name:
+        description: 'Tag to deploy (e.g. v2.1.0)'
+        required: true
+        type: string
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.inputs.tag_name || github.ref_name }}
+
+      # IMPORTANT: Replace this step with your actual production deployment commands!
+      - name: Deploy to Production
+        run: |
+          echo "Simulating deployment to Production Environment..."
+          echo "Deploying Ref: ${{ github.event.inputs.tag_name || github.ref_name }}"
+          echo "✅ Production Deployment Successful"
