@@ -1,4 +1,4 @@
-# LaneSync Java (Gradle) Starter
+# LaneSync Java (Gradle) Starter.
 
 Minimal Java 17 + Gradle + JUnit 5 project scaffolded by LaneSync.
 
